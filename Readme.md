@@ -55,3 +55,24 @@ $ terraform plan -out out.plan
 $ terraform apply out.plan
 
 ```
+### Test the Kubernetes cluster
+
+The Kubernetes tools can be used to verify the newly created cluster.
+
+* Get the Kubernetes configuration from the Terraform state and store it in a file that kubectl can read.
+```
+$ echo "$(terraform output kube_config)" > ~/.azurek8s
+
+```
+* Set an environment variable so that kubectl picks up the correct config.
+
+```
+$ export KUBECONFIG=~/.azurek8s
+```
+
+* Verify the health of the cluster.
+
+```
+$ kubectl get nodes
+```
+
