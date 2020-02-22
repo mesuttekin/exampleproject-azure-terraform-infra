@@ -60,7 +60,7 @@ variable "acr_admin_enabled" {
 variable "acr_georeplication_locations" {
   type    = list(string)
 
-  default = ["eastus", "westus"]
+  default = ["westeurope", "westus"]
 }
 
 variable "location" {
@@ -128,7 +128,7 @@ variable "aks_agent_count" {
 
 variable "aks_agent_vm_size" {
   description = "The size of the Virtual Machine."
-  default     = "Standard_D3_v2"
+  default     = "Standard_D12_v2"
 }
 
 variable "kubernetes_version" {

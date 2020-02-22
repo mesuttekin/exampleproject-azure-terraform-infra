@@ -41,6 +41,7 @@ resource "azurerm_public_ip" "public-ip" {
   resource_group_name = azurerm_resource_group.rg-net.name
   allocation_method   = "Static"
   sku                 = "Standard"
+  domain_name_label   = var.project_name
 
   tags = var.tags
 
