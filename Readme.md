@@ -133,7 +133,7 @@ Edit the helm/helm-config.yaml and enter appropriate values for appgw and armAut
 
 * Install the Application Gateway ingress controller package:
 ```
-helm install -f helm-config.yaml application-gateway-kubernetes-ingress/ingress-azure
+helm install -f helm-config.yaml appgw-ingress-controller application-gateway-kubernetes-ingress/ingress-azure
 
 
 ```

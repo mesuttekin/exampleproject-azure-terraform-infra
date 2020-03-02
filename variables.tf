@@ -60,7 +60,7 @@ variable "acr_admin_enabled" {
 variable "acr_georeplication_locations" {
   type    = list(string)
 
-  default = ["westeurope", "westus"]
+  default = ["westus", "northeurope"]
 }
 
 variable "location" {
@@ -82,6 +82,11 @@ variable "aks_subnet_name" {
   default     = "kubesubnet"
 }
 
+variable "appgw_subnet_name" {
+  description = "Application Gateway Subnet Name."
+  default     = "appgwsubnet"
+}
+
 variable "aks_subnet_address_prefix" {
   description = "Containers DNS server IP address."
   default     = "15.0.0.0/16"
@@ -99,13 +104,20 @@ variable "app_gateway_name" {
 
 variable "app_gateway_sku" {
   description = "Name of the Application Gateway SKU."
-  default     = "Standard_v2"
+  default     = "Standard_Small"
 }
 
 variable "app_gateway_tier" {
   description = "Tier of the Application Gateway SKU."
-  default     = "Standard_v2"
+  default     = "Standard"
 }
+
+variable "app_gateway_sku_capacity" {
+  description = "Capacity of the Application Gateway SKU."
+  default     = 1
+}
+
+
 
 variable "aks_name" {
   description = "Name of the AKS cluster."

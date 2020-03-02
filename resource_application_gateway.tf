@@ -5,13 +5,13 @@ resource "azurerm_application_gateway" "appgw-network" {
 
   sku {
     name     = var.app_gateway_sku
-    tier     = "Standard_v2"
-    capacity = 2
+    tier     = var.app_gateway_tier
+    capacity = var.app_gateway_sku_capacity
   }
 
   gateway_ip_configuration {
     name      = "appGatewayIpConfig"
-    subnet_id = data.azurerm_subnet.appgwsubnet.id
+    subnet_id = azurerm_subnet.appgw_subnet.id
   }
 
   frontend_port {
@@ -58,5 +58,5 @@ resource "azurerm_application_gateway" "appgw-network" {
 
   tags = var.tags
 
-  depends_on = [azurerm_virtual_network.vnet, azurerm_public_ip.public-ip, azurerm_resource_group.rg-k8s]
+  depends_on = [azurerm_subnet.appgw_subnet, azurerm_public_ip.public-ip, azurerm_resource_group.rg-k8s]
 }

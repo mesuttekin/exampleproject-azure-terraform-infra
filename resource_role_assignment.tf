@@ -1,9 +1,9 @@
 resource "azurerm_role_assignment" "ra-network-contributor" {
-  scope                = data.azurerm_subnet.kubesubnet.id
+  scope                = azurerm_subnet.aks_subnet.id
   role_definition_name = "Network Contributor"
   principal_id         = var.azure_sp_object_id
 
-  depends_on = [azurerm_virtual_network.vnet]
+  depends_on = [azurerm_subnet.aks_subnet]
 }
 
 resource "azurerm_role_assignment" "ra-managed-identity" {
