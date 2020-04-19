@@ -7,9 +7,9 @@ verbosityLevel: 3
 # Specify which application gateway the ingress controller will manage
 #
 appgw:
-    subscriptionId: <subscriptionId>
-    resourceGroup: <resourceGroupName>
-    name: <applicationGatewayName>
+    subscriptionId: 5021f905-c816-4eed-a12d-fc7aad168ace
+    resourceGroup: rg-k8s-westeurope
+    name: appgw
     usePrivateIP: false
 
     # Setting appgw.shared to "true" will create an AzureIngressProhibitedTarget CRD.
@@ -32,9 +32,8 @@ appgw:
 # Two authentication methods are available:
 # - Option 1: AAD-Pod-Identity (https://github.com/Azure/aad-pod-identity)
 armAuth:
-    type: aadPodIdentity
-    identityResourceID: <identityResourceId>
-    identityClientID:  <identityClientId>
+    type: servicePrincipal
+    secretJSON: ewogICJjbGllbnRJZCI6ICI0MmMyNmM4MC04ZTYxLTQyMzItYjdiMS1iMzgyOTliYmI3MWIiLAogICJjbGllbnRTZWNyZXQiOiAiMjI4OGYyNWMtOGRhMy00MjVkLWE4ODgtMTYwYWMxOWYwMTI2IiwKICAic3Vic2NyaXB0aW9uSWQiOiAiNTAyMWY5MDUtYzgxNi00ZWVkLWExMmQtZmM3YWFkMTY4YWNlIiwKICAidGVuYW50SWQiOiAiZDA4MTJhMTUtMWJlNy00YjJlLTkzZWYtYTBiZGQ4ZmZkOWZlIiwKICAiYWN0aXZlRGlyZWN0b3J5RW5kcG9pbnRVcmwiOiAiaHR0cHM6Ly9sb2dpbi5taWNyb3NvZnRvbmxpbmUuY29tIiwKICAicmVzb3VyY2VNYW5hZ2VyRW5kcG9pbnRVcmwiOiAiaHR0cHM6Ly9tYW5hZ2VtZW50LmF6dXJlLmNvbS8iLAogICJhY3RpdmVEaXJlY3RvcnlHcmFwaFJlc291cmNlSWQiOiAiaHR0cHM6Ly9ncmFwaC53aW5kb3dzLm5ldC8iLAogICJzcWxNYW5hZ2VtZW50RW5kcG9pbnRVcmwiOiAiaHR0cHM6Ly9tYW5hZ2VtZW50LmNvcmUud2luZG93cy5uZXQ6ODQ0My8iLAogICJnYWxsZXJ5RW5kcG9pbnRVcmwiOiAiaHR0cHM6Ly9nYWxsZXJ5LmF6dXJlLmNvbS8iLAogICJtYW5hZ2VtZW50RW5kcG9pbnRVcmwiOiAiaHR0cHM6Ly9tYW5hZ2VtZW50LmNvcmUud2luZG93cy5uZXQvIgp9Cg==
 
 ## Alternatively you can use Service Principal credentials
 # armAuth:
@@ -48,4 +47,4 @@ rbac:
 
 # Specify aks cluster related information. THIS IS BEING DEPRECATED.
 aksClusterConfiguration:
-    apiServerAddress: <aks-api-server-address>
+    apiServerAddress: aks-00b68bcf.hcp.westeurope.azmk8s.io
